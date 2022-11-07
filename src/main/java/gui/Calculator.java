@@ -12,12 +12,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-public class Calculator extends VBox implements EventHandler<***>{
-	
-	String number1 = "";
-	String number2 = "";
-	String operator;
-	Text displayText;
+public class Calculator extends VBox implements EventHandler<ActionEvent> {
+
+    String number1 = "";
+    String number2 = "";
+    String operator;
+    Text displayText;
 	
 	public Calculator(){
 		super(10);
@@ -31,108 +31,199 @@ public class Calculator extends VBox implements EventHandler<***>{
 		
 		sp.setPadding(new Insets(10, 10, 10, 10));
 		
-		*** gd = new GridPane();
+		GridPane gd = new GridPane();
 		
 		gd.setPadding(new Insets(10, 10, 10, 10));
 		gd.setVgap(5);
 		gd.setHgap(4);
 		
-		gd.setAlignment(Pos.***);
+		gd.setAlignment(Pos.CENTER);
 		
-		Button b7 = new ***("7");
-		gd.add(b7, 0, ***);
-		b7.setPrefWidth(50);
-		b7.setOnAction(this);
-		
-		*** b8 = new Button("8");
-		gd.add(b8, ***, 0);
-		b8.setPrefWidth(50);
-		b8.setOnAction(this);
-		
-		Button b9 = new Button(***);
-		gd.add(b9, 2, ***);
-		b9.setPrefWidth(50);
-		b9.setOnAction(this);
-		
-		Button div = new Button("/");
-		gd.add(div, ***, ***);
-		div.setPrefWidth(50);
-		div.setOnAction(***);
-		
-		*** b4 = new Button("4");
-		gd.add(b4, 0, 1);
-		b4.setPrefWidth(50);
-		b4.setOnAction(this);
-		
-		Button b5 = new ***("5");
-		gd.***(b5, 1, 1);
-		b5.setPrefWidth(50);
-		b5.setOnAction(this);
-		
-		Button b6 = new Button("6");
-		gd.add(b6, ***, ***);
-		b6.setPrefWidth(50);
-		***.setOnAction(this);
-		
-		*** mul = new Button("*");
-		gd.add(mul, ***, 1);
-		mul.setPrefWidth(50);
-		mul.setOnAction(this);
-		
-		Button b1 = new Button(***);
-		gd.add(b1, 0, ***);
-		b1.setPrefWidth(50);
-		b1.setOnAction(this);
-		
-		Button b2 = new ***("2");
-		gd.add(b2, ***, 2);
-		b2.setPrefWidth(50);
-		b2.setOnAction(this);
-		
-		Button b3 = new ***("3");
-		***.add(b3, 2, 2);
-		b3.setPrefWidth(50);
-		b3.setOnAction(***);
-		
-		*** minus = new Button("-");
-		gd.add(minus, 3, ***);
-		minus.setPrefWidth(50);
-		minus.setOnAction(this);
-		
-		Button b0 = new ***("0");
-		gd.add(b0, 0, 3, 2, 1);
-		b0.setPrefWidth(105);
-		***.setOnAction(this);
-		
-		Button plus = new Button("+");
-		gd.***(plus, ***, 3);
-		plus.setPrefWidth(50);
-		plus.setOnAction(this);
-		
-		Button equals = new Button(***);
-		***.add(equals, 3, 3);
-		equals.setPrefWidth(50);
-		equals.setOnAction(this);
-		
-		Button reset = new ***("C");
-		gd.add(reset, 0, 4, ***, 1);
-		reset.setPrefWidth(215);
-		reset.setOnAction(***);
-		
-		this.getChildren().addAll(sp, gd);
+        Button b7 = new Button("7");
+        gd.add(b7, 0, 0);
+        b7.setPrefWidth(50);
+        b7.setOnAction(this);
+
+        Button b8 = new Button("8");
+        gd.add(b8, 1, 0);
+        b8.setPrefWidth(50);
+        b8.setOnAction(this);
+
+        Button b9 = new Button("9");
+        gd.add(b9, 2, 0);
+        b9.setPrefWidth(50);
+        b9.setOnAction(this);
+
+        Button div = new Button("/");
+        gd.add(div, 3, 0);
+        div.setPrefWidth(50);
+        div.setOnAction(this);
+
+        Button b4 = new Button("4");
+        gd.add(b4, 0, 1);
+        b4.setPrefWidth(50);
+        b4.setOnAction(this);
+
+        Button b5 = new Button("5");
+        gd.add(b5, 1, 1);
+        b5.setPrefWidth(50);
+        b5.setOnAction(this);
+
+        Button b6 = new Button("6");
+        gd.add(b6, 2, 1);
+        b6.setPrefWidth(50);
+        b6.setOnAction(this);
+
+        Button mul = new Button("*");
+        gd.add(mul, 3, 1);
+        mul.setPrefWidth(50);
+        mul.setOnAction(this);
+
+        Button b1 = new Button("1");
+        gd.add(b1, 0, 2);
+        b1.setPrefWidth(50);
+        b1.setOnAction(this);
+
+        Button b2 = new Button("2");
+        gd.add(b2, 1, 2);
+        b2.setPrefWidth(50);
+        b2.setOnAction(this);
+
+        Button b3 = new Button("3");
+        gd.add(b3, 2, 2);
+        b3.setPrefWidth(50);
+        b3.setOnAction(this);
+
+        Button minus = new Button("-");
+        gd.add(minus, 3, 2);
+        minus.setPrefWidth(50);
+        minus.setOnAction(this);
+
+        Button b0 = new Button("0");
+        gd.add(b0, 0, 3, 2, 1);
+        b0.setPrefWidth(105);
+        b0.setOnAction(this);
+
+        Button plus = new Button("+");
+        gd.add(plus, 2, 3);
+        plus.setPrefWidth(50);
+        plus.setOnAction(this);
+
+        Button equals = new Button("=");
+        gd.add(equals, 3, 3);
+        equals.setPrefWidth(50);
+        equals.setOnAction(this);
+
+        Button reset = new Button("C");
+        gd.add(reset, 0, 4, 4, 1);
+        reset.setPrefWidth(215);
+        reset.setOnAction(this);
+
+        this.getChildren().addAll(sp, gd);
 	}
 
+	public String setValue(String value) {
+		try{
+	        Integer.parseInt(value);
+	        if(number1.isEmpty()) { 
+	        	number1 = value; 
+	        	operator = " ";
+	        } else { 
+	        	number2 = value; 
+	        }
+	        
+	    } catch(NumberFormatException e){
+	    	operator = value;
+	    }
+		return number1 + operator + number2;
+	}
+		
+	public String doOperation(String operation) {
+		for(char element: operation.toCharArray()) {
+			if(element == '+' || element == '-' || element == '/' || element == '*') {
+				number1 = operation.substring(0, operation.indexOf(element));
+				number2 = operation.substring(operation.indexOf(element) + 1, operation.length());
+				operator = Character.toString(element);
+			}
+		}
+		
+		try {
+			switch (operator) {
+			case "+":
+				return Double.toString(Double.parseDouble(number1) + Double.parseDouble(number2));
+			case "-":
+				return Double.toString(Double.parseDouble(number1) - Double.parseDouble(number2));
+			case "*":
+				return Double.toString(Double.parseDouble(number1) * Double.parseDouble(number2));
+			case "/":
+				return Double.toString(Double.parseDouble(number1) / Double.parseDouble(number2));
+			default:
+				return "0.0";
+			}		
+		} catch(NumberFormatException e) {
+			return "Esta operación no es válida";
+		}
+	}
+	
 	@Override
-	public void ***(ActionEvent event) {
+	public void handle(ActionEvent event) {
 		
 		Button b = (Button) event.getSource();
 		String value = b.getText();
 		
-		***
-		***
-		***
-		
+		switch (value) {
+        	case "0": 
+        		displayText.setText(setValue(value));
+        		break;
+        	case "1":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "2":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "3":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "4":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "5":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "6":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "7":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "8":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "9":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "+":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "-":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "/":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "*":
+        		displayText.setText(setValue(value));
+        		break;
+        	case "=":
+        		displayText.setText(doOperation(displayText.getText()));
+        		number1 = ""; number2 = ""; operator = "";
+        		break;
+        	case "C":
+        		number1 = ""; number2 = ""; operator = "";
+        		displayText.setText("");
+        		break;
+        	default:
+        		break;
+		}
 	}
-	
-
 }
